@@ -10,14 +10,14 @@ By defaut, running this image without any command will run `gradle -version` in 
 To run something more interesting, say `gradle clean war`, you should mount your project root in /app. For example, you can run the following to create a deployable web archive.
 
 ```bash
-docker run --rm -v /path/to/your/project:/usr/bin/app:rw niaquinto/gradle clean war
+docker run --rm -v /path/to/your/project:/usr/bin/app:rw messivanio/gradle clean war
 ```
 
 ### Plugins
 Of course, you can use any command here, including those dependent on plugins. For example, if you project includes the Jetty plugin (by including `apply plugin: 'jetty'` in its build.gradle) you can run the following command to start an instance of Jetty running a WAR of your application on port 8080 on the host.
 
 ```bash
-docker run --rm -p 8080:8080 -v /path/to/your/project:/usr/bin/app:rw niaquinto/gradle jettyRunWar
+docker run --rm -p 8080:8080 -v /path/to/your/project:/usr/bin/app:rw messivanio/gradle jettyRunWar
 ```
 
 ### Changing the Default Behavior
@@ -25,7 +25,7 @@ Say you want `gradle clean war` to run if you launch the container without any o
 
 ```bash
 # Use this image as a base
-FROM niaquinto/gradle
+FROM messivanio/gradle
 MAINTAINER your-name <your@email.com>
 
 # In case someone loses the Dockerfile
@@ -49,11 +49,11 @@ CMD ["clean", "war"]
 To build this image yourself, run...
  
 ```bash
-docker build github.com/niaquinto/docker-gradle
+docker build github.com/messivanio/docker-gradle
 ```
 
 Or, you can pull the image from the central docker repository by using... 
 
 ```bash
-docker pull niaquinto/gradle
+docker pull messivanio/gradle
 ```
